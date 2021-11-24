@@ -1,0 +1,70 @@
+Index: src/main/java/com/mobilochka/demo/securingweb/MvcConfig.java
+===================================================================
+--- src/main/java/com/mobilochka/demo/securingweb/MvcConfig.java	(revision 2ddb8da43c3af58b9f21e61a78d96cb33c14605a)
++++ src/main/java/com/mobilochka/backend/securingweb/MvcConfig.java	(date 1637783157820)
+@@ -1,4 +1,4 @@
+-package com.mobilochka.demo.securingweb;
++package com.mobilochka.backend.securingweb;
+ 
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+Index: src/main/java/com/mobilochka/demo/securingweb/WebSecurityConfig.java
+===================================================================
+--- src/main/java/com/mobilochka/demo/securingweb/WebSecurityConfig.java	(revision 2ddb8da43c3af58b9f21e61a78d96cb33c14605a)
++++ src/main/java/com/mobilochka/backend/securingweb/WebSecurityConfig.java	(date 1637783157741)
+@@ -1,4 +1,4 @@
+-package com.mobilochka.demo.securingweb;
++package com.mobilochka.backend.securingweb;
+ 
+ 
+ import org.springframework.context.annotation.Bean;
+Index: src/test/java/com/mobilochka/demo/BackendApplicationTests.java
+===================================================================
+--- src/test/java/com/mobilochka/demo/BackendApplicationTests.java	(revision 2ddb8da43c3af58b9f21e61a78d96cb33c14605a)
++++ src/test/java/com/mobilochka/backend/BackendApplicationTests.java	(date 1637783157661)
+@@ -1,4 +1,4 @@
+-package com.mobilochka.demo;
++package com.mobilochka.backend;
+ 
+ import org.junit.jupiter.api.Test;
+ import org.springframework.boot.test.context.SpringBootTest;
+Index: src/main/java/com/mobilochka/demo/BackendApplication.java
+===================================================================
+--- src/main/java/com/mobilochka/demo/BackendApplication.java	(revision 2ddb8da43c3af58b9f21e61a78d96cb33c14605a)
++++ src/main/java/com/mobilochka/backend/BackendApplication.java	(date 1637783157769)
+@@ -1,4 +1,4 @@
+-package com.mobilochka.demo;
++package com.mobilochka.backend;
+ 
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+Index: src/main/java/com/mobilochka/demo/model/Users.java
+===================================================================
+--- src/main/java/com/mobilochka/demo/model/Users.java	(revision 2ddb8da43c3af58b9f21e61a78d96cb33c14605a)
++++ src/main/java/com/mobilochka/backend/model/Users.java	(date 1637783157686)
+@@ -1,4 +1,4 @@
+-package com.mobilochka.demo.model;
++package com.mobilochka.backend.model;
+ 
+ 
+ import javax.persistence.*;
+Index: src/main/java/com/mobilochka/demo/web/Controller.java
+===================================================================
+--- src/main/java/com/mobilochka/demo/web/Controller.java	(revision 2ddb8da43c3af58b9f21e61a78d96cb33c14605a)
++++ src/main/java/com/mobilochka/backend/web/Controller.java	(date 1637783157794)
+@@ -1,4 +1,4 @@
+-package com.mobilochka.demo.web;
++package com.mobilochka.backend.web;
+ 
+ 
+ import org.springframework.web.bind.annotation.RestController;
+Index: src/main/java/com/mobilochka/demo/model/Role.java
+===================================================================
+--- src/main/java/com/mobilochka/demo/model/Role.java	(revision 2ddb8da43c3af58b9f21e61a78d96cb33c14605a)
++++ src/main/java/com/mobilochka/backend/model/Role.java	(date 1637783157711)
+@@ -1,4 +1,4 @@
+-package com.mobilochka.demo.model;
++package com.mobilochka.backend.model;
+ 
+ public enum  Role {
+     ROLE_USER,
