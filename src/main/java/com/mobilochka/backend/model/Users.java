@@ -1,4 +1,4 @@
-package com.mobilochka.demo.model;
+package com.mobilochka.backend.model;
 
 
 import javax.persistence.*;

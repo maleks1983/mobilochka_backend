@@ -1,4 +1,4 @@
-package com.mobilochka.demo.securingweb;
+package com.mobilochka.backend.securingweb;
 
 
 import org.springframework.context.annotation.Bean;

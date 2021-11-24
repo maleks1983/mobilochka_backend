@@ -1,4 +1,4 @@
-package com.mobilochka.demo.web;
+package com.mobilochka.backend.web;
 
 
 import org.springframework.web.bind.annotation.RestController;

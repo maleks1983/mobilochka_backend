@@ -1,4 +1,4 @@
-package com.mobilochka.demo.model;
+package com.mobilochka.backend.model;
 
 public enum  Role {
     ROLE_USER,
