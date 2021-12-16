@@ -16,14 +16,14 @@ import java.io.IOException;
 
 
 @Service
-public class AdminServise {
+public class AdminService {
 
     private final CatalogRepository catalogRepository;
     private final GroupRepository groupRepository;
     private final ProductRepository productRepository;
     private final ManufacturRepository manufacturRepository;
 
-    public AdminServise(CatalogRepository catalogRepository, GroupRepository groupRepository, ProductRepository productRepository, ManufacturRepository manufacturRepository) {
+    public AdminService(CatalogRepository catalogRepository, GroupRepository groupRepository, ProductRepository productRepository, ManufacturRepository manufacturRepository) {
         this.catalogRepository = catalogRepository;
         this.groupRepository = groupRepository;
         this.productRepository = productRepository;
@@ -37,14 +37,8 @@ public class AdminServise {
         int lastRow = sheet.getLastRowNum();
         for (int i = 8; i < lastRow; i++) {
             catalogRepository.saveByName(sheet.getRow(i).getCell(0).toString());
-        }
-        for (int i = 8; i < lastRow; i++) {
             groupRepository.saveByName(sheet.getRow(i).getCell(1).toString());
-        }
-        for (int i = 8; i < lastRow; i++) {
             manufacturRepository.saveByName(sheet.getRow(i).getCell(2).toString());
-        }
-        for (int i = 8; i < lastRow; i++) {
             sheet.getRow(i).getCell(11).setCellType(CellType.STRING);
             sheet.getRow(i).getCell(4).setCellType(CellType.STRING);
             Product product = new Product(

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class ProductRepository {
@@ -29,13 +30,18 @@ public class ProductRepository {
     }
 
     public Page<Product> findAll(int page, int size) {
-        Pageable sortedByName = PageRequest.of(page, size, Sort.by("article"));
+        Pageable sortedByName = PageRequest.of(page, size, Sort.by("name"));
         return repository.findAll(sortedByName);
     }
 
 
     public Product findByBarcode(String barcode) {
         return repository.findByBarcode(barcode);
+    }
+
+    public List<Product> findAllNew(){
+        Pageable sortedByArticle = PageRequest.of(0, 10, Sort.by("id").descending());
+        return repository.findAll(sortedByArticle).getContent();
     }
 }
 

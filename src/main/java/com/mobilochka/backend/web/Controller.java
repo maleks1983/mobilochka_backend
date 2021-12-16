@@ -1,18 +1,14 @@
 package com.mobilochka.backend.web;
 
-
 import com.mobilochka.backend.model.product.Product;
 import com.mobilochka.backend.servise.ProductService;
-import org.springframework.data.domain.Page;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/products")
 public class Controller {
 
     private final ProductService service;
@@ -21,11 +17,13 @@ public class Controller {
         this.service = service;
     }
 
+
     @CrossOrigin
-    @GetMapping("/{id}")
-    public Page<Product> products(@PathVariable int id) {
-        Page<Product> pages = service.getAll(0, 30);
-        return service.getAll(id, 30);
+    @GetMapping("/newProducts")
+    public List<Product> newProducts() {
+        return service.findAllNew();
 
     }
+
+
 }

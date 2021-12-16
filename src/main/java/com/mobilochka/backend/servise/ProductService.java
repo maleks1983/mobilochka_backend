@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductService {
@@ -41,6 +42,11 @@ public class ProductService {
     public Product findByBarcode(String barcode) {
         return productRepository.findByBarcode(barcode);
     }
+
+    public List<Product> findAllNew() {
+        return productRepository.findAllNew();
+    }
+
 
 }
 

@@ -10,13 +10,14 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Service
-public class GroupServise {
+public class CategoryService {
 
     private final CatalogRepository repository;
 
-    public GroupServise(CatalogRepository repository) {
+    public CategoryService(CatalogRepository repository) {
         this.repository = repository;
     }
 
@@ -27,7 +28,6 @@ public class GroupServise {
     public Category findById(int id) {
         return repository.findById(id);
     }
-
 
 
 }
