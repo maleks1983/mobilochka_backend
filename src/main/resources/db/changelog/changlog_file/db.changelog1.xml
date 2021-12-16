@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+    <changeSet id="create Sequence" author="admin">
+        <createSequence
+                catalogName="sequence"
+                sequenceName="GLOBAL_SEQ"
+                startValue="100000"
+                incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="create table users" author="admin">
+        <createTable tableName="users">
+            <column name="id" type="bigint" defaultValueSequenceNext="GLOBAL_SEQ">
+                <constraints primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="user_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="registered" type="TIMESTAMP" defaultValueDate="now()"/>
+            <column name="enabled" type="boolean" defaultValueBoolean="true"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create unique email" author="admin">
+        <addUniqueConstraint tableName="users" columnNames="email, id" constraintName="users_unique_email_idx"/>
+    </changeSet>
+
+    <changeSet id="create table roles" author="admin">
+        <createTable tableName="user_roles">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"
+                             uniqueConstraintName="user_roles_idx"
+                             foreignKeyName="user_id"
+                             referencedTableName="users"
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+            <column name="role" type="varchar(255)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create unique roles" author="admin">
+        <addUniqueConstraint tableName="user_roles" columnNames="role, user_id" constraintName="user_roles_idx"/>
+    </changeSet>
+
+
+    <changeSet id="create table category" author="admin">
+        <createTable tableName="category">
+            <column name="id" type="bigint" defaultValueSequenceNext="GLOBAL_SEQ">
+                <constraints primaryKey="true" primaryKeyName="category_pkey"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create unique category" author="admin">
+        <addUniqueConstraint tableName="category" columnNames="name, id"
+                             constraintName="catalog_unique_name_idx"/>
+    </changeSet>
+
+    <changeSet id="create table groups" author="admin">
+        <createTable tableName="groups">
+            <column name="id" type="bigint" defaultValueSequenceNext="GLOBAL_SEQ">
+                <constraints primaryKey="true" primaryKeyName="group_pkey"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create unique groups" author="admin">
+        <addUniqueConstraint tableName="groups" columnNames="name, id"
+                             constraintName="groups_unique_name_idx"/>
+    </changeSet>
+
+
+
+    <changeSet id="create table manufacture" author="admin">
+        <createTable tableName="manufacture">
+            <column name="id" type="bigint" defaultValueSequenceNext="GLOBAL_SEQ">
+                <constraints primaryKey="true" primaryKeyName="manufacture_pkey"/>
+            </column>
+            <column name="manufacture_name" type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create unique manufacture" author="admin">
+        <addUniqueConstraint tableName="manufacture" columnNames="manufacture_name, id"
+                             constraintName="catalog_unique_manufacture_idx"/>
+    </changeSet>
+
+
+    <changeSet id="create table product" author="admin">
+        <createTable tableName="product">
+            <column name="id" type="bigint" defaultValueSequenceNext="GLOBAL_SEQ">
+                <constraints primaryKey="true" primaryKeyName="product_pkey"/>
+            </column>
+
+            <column name="group_product_id" type="integer">
+                <constraints nullable="false" foreignKeyName="group_product_id_fk"/>
+            </column>
+
+            <column name="category_product_id" type="integer">
+                <constraints  nullable="false" foreignKeyName="category_product_id_fk"/>
+            </column>
+            <column name="manufacture_product_id" type="integer">
+                <constraints nullable="false" foreignKeyName="manufacture_product_id_fk"/>
+            </column>
+            <column name="product_name" type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="article" type="varchar(255)" defaultValue="0">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="price" type="double" defaultValue="0.0"/>
+            <column name="price_rrc" type="integer" defaultValue="0"/>
+            <column name="link" type="varchar(255)" defaultValue=""/>
+            <column name="UKTBED" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="create group_product_id_fk" author="admin">
+        <addForeignKeyConstraint baseTableName="product"
+                                 baseColumnNames="group_product_id"
+                                 constraintName="group_product_id_fk"
+                                 referencedTableName="groups"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create category_product_id_fk" author="admin">
+        <addForeignKeyConstraint baseTableName="product"
+                                 baseColumnNames="category_product_id"
+                                 constraintName="category_product_id_fk"
+                                 referencedTableName="category"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create manufacture_product_id_fk" author="admin">
+        <addForeignKeyConstraint baseTableName="product"
+                                 baseColumnNames="manufacture_product_id"
+                                 constraintName="manufacture_product_id_fk"
+                                 referencedTableName="manufacture"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create unique article" author="admin">
+        <addUniqueConstraint tableName="product" columnNames="article, id"
+                             constraintName="product_unique_article_idx"/>
+    </changeSet>
+
+    <changeSet id="create table barcode" author="admin">
+        <createTable tableName="barcodes">
+            <column name="barcode" type="varchar(255)">
+                <constraints unique="true"
+                             nullable="true"
+                             primaryKey="true"
+                             primaryKeyName="barcode_pkey"/>
+            </column>
+            <column name="product_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="barcode_product_id_fk"
+                             referencedTableName="product"
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table images" author="admin">
+        <createTable tableName="images">
+            <column name="image" type="varchar(255)"/>
+            <column name="product_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="images_product_id_fk"
+                             referencedTableName="product"
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table characteristic" author="admin">
+        <createTable tableName="characteristics">
+            <column name="characteristic" type="varchar(255)"/>
+            <column name="product_id" type="integer">
+                <constraints nullable="false"
+                             foreignKeyName="characteristic_product_id_fk"
+                             referencedTableName="product"
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
