@@ -16,12 +16,12 @@ class UserRepositoryTest {
     @Autowired
     protected UserRepository repository;
 
-    @Test
-    void saveUser() {
-        repository.saveUser(admin);
-        Users u = repository.findById(100000);
-        System.out.println(u.toString());
-
-    }
+//    @Test
+//    void saveUser() {
+//        repository.saveUser(admin);
+//        Users u = repository.findById(100000);
+//        System.out.println(u.toString());
+//
+//    }
 
 }

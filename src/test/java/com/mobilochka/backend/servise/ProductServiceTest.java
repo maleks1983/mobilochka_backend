@@ -28,9 +28,9 @@ class ProductServiceTest {
 //        System.out.println(products);
 //    }
 
-    @Test
-    void findByBarcode() {
-        Product p = productService.findByBarcode("001007419598");
-        System.out.println(p);
-    }
+//    @Test
+//    void findByBarcode() {
+//        Product p = productService.findByBarcode("001007419598");
+//        System.out.println(p);
+//    }
 }

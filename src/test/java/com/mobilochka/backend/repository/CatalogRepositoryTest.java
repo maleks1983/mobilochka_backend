@@ -15,21 +15,21 @@ class CatalogRepositoryTest {
     @Autowired
     private CategoryServise catalogRepository;
 
-
-    @Test
-    void save() {
-        catalogRepository.save(new Category("Автотовары"));
-    }
-
-    @Test
-    void saveWirhParrent() {
-        catalogRepository.save(new Category("АЗУ"));
-    }
-
-    @Test
-    void findById() {
-        System.out.println(catalogRepository.findById(100001));
-    }
+//
+//    @Test
+//    void save() {
+//        catalogRepository.save(new Category("Автотовары"));
+//    }
+//
+//    @Test
+//    void saveWirhParrent() {
+//        catalogRepository.save(new Category("АЗУ"));
+//    }
+//
+//    @Test
+//    void findById() {
+//        System.out.println(catalogRepository.findById(100001));
+//    }
 
 
 }
