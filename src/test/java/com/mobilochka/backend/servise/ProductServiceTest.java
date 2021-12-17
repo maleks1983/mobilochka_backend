@@ -36,4 +36,10 @@ class ProductServiceTest {
        productService.findAllNew();
 
     }
+
+    @Test
+    void findAllNewSmartfon() {
+        List<Product> p= productService.findAllNewSmartfon();
+
+    }
 }

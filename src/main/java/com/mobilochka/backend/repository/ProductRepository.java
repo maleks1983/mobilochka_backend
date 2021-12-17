@@ -8,11 +8,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Set;
 
 @Repository
 public class ProductRepository {
+    @PersistenceContext
+    private EntityManager entityManager;
+
 
     private final ProductJpaRepository repository;
 
@@ -42,6 +47,10 @@ public class ProductRepository {
     public List<Product> findAllNew(){
         Pageable sortedByArticle = PageRequest.of(0, 12, Sort.by("id").descending());
         return repository.findAll(sortedByArticle).getContent();
+    }
+    public List<Product> findAllNewSmartfon(){
+        return entityManager.createQuery("SELECT p FROM Product p  where p.category.name =: name ORDER BY p.id desc ",
+                Product.class).setParameter("name", "Смартфоны").setMaxResults(12).getResultList();
     }
 }
 

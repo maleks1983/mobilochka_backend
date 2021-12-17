@@ -21,7 +21,7 @@ public class Controller {
     @CrossOrigin
     @GetMapping("/newProducts")
     public List<Product> newProducts() {
-        return service.findAllNew();
+        return service.findAllNewSmartfon();
 
     }
 

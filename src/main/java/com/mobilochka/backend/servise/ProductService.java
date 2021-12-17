@@ -47,7 +47,9 @@ public class ProductService {
         return productRepository.findAllNew();
     }
 
-
+    public List<Product> findAllNewSmartfon() {
+        return productRepository.findAllNewSmartfon();
+    }
 }
 
 
