@@ -40,7 +40,7 @@ public class ProductRepository {
     }
 
     public List<Product> findAllNew(){
-        Pageable sortedByArticle = PageRequest.of(0, 10, Sort.by("id").descending());
+        Pageable sortedByArticle = PageRequest.of(0, 12, Sort.by("id").descending());
         return repository.findAll(sortedByArticle).getContent();
     }
 }
