@@ -60,7 +60,7 @@ public class Product extends AbstractIdEntyty {
     @Column(name = "barcode")
     private Set<String> barcode;
 
-    @ElementCollection(fetch = FetchType.LAZY)
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "images", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "image")
     private Set<String> image;

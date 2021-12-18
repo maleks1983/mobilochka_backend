@@ -50,6 +50,8 @@ public class ProductService {
     public List<Product> findAllNewSmartfon() {
         return productRepository.findAllNewSmartfon();
     }
+
+
 }
 
 
