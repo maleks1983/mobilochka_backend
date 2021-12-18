@@ -16,10 +16,10 @@ class AdminServiseTest {
     private AdminService adminServise;
 
 
-    @Test
-    void LoadByEXEL() throws IOException {
-        adminServise.loadByExel("D:\\Cifrotech\\Price_list_Excel_06_12_2021.xlsx");
-    }
+//    @Test
+//    void LoadByEXEL() throws IOException {
+//        adminServise.loadByExel("D:\\Cifrotech\\Price_list_Excel_06_12_2021.xlsx");
+//    }
 
 
 }
